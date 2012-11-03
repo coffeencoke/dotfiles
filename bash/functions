@@ -53,6 +53,8 @@ function git-nuke {
   git branch -D $1 && git push origin :$1
 }
 
+function gic { git commit -m "'$*'"; }
+
 # Creating a remote tracking branch
 function track { 
   git branch --track $1 "origin/$1"

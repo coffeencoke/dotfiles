@@ -38,3 +38,11 @@ alias so='source ~/.dotfiles/bash/aliases'
 alias sp='safepush'
 alias u='cd ..'
 alias vi='vim'
+alias gst='git status'
+alias mysql_start='mysql.server start'
+alias mysql_stop='mysql.server stop'
+alias mysql_restart='mysql.server restart'
+alias l='ls -lha'
+alias c='clear'
+alias wget="curl -O"
+
