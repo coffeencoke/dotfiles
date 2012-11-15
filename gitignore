@@ -6,3 +6,6 @@ log/
 db/*.sqlite3
 .netrwhist
 project-notes.txt
+vim/.netrwhist
+vim/bundle
+vim/doc/tags-ja

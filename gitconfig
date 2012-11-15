@@ -1,6 +1,6 @@
 [user]
-	name = Ben Orenstein
-	email = ben.orenstein@gmail.com 
+	name = Matt Simpson
+	email = matt.simpson3@gmail.com 
 [alias]
 	co = checkout
         cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -30,4 +30,4 @@
 [rerere]
 	enabled = 1
 [github]
-	user = r00k
+	user = coffeencoke
