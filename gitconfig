@@ -2,10 +2,6 @@
   name = Matt Simpson
 	email = matt.simpson3@gmail.com 
 
-[alias]
-  co = checkout
-  cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
-
 [color]
   ui = auto
   interactive = auto
@@ -32,6 +28,7 @@
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
   br = branch
   ci = commit -v
+  cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   clear = !git add . && git stash && git stash drop
   co = checkout
   cp = cherry-pick
@@ -84,3 +81,5 @@
 
 [github]
 	user = coffeencoke
+[git-pair]
+	authors = Matt Simpson <matt.simpson3@gmail.com>
