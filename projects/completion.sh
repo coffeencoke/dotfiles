@@ -22,3 +22,4 @@ end
 
 puts ProjectCompletion.new(ENV["COMP_LINE"]).matches
 exit 0
+

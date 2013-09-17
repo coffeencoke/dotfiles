@@ -2,20 +2,25 @@
 
 These are config files to set up a system the way I like it.
 
-* I use [Janus](https://github.com/carlhuda/janus) for my vim setup.
-* Checkout the aliases
-* Enjoy the git bash prompt
-* And completeness for many things
+Currently going through a transition... vim config is not yet setup.  
 
-## Installation
+# Install
+
+To install:
 
 ```
-  git clone git://github.com/coffeencoke/dotfiles ~/.dotfiles
-  cd ~/.dotfiles
-  
-  # pass dry=true to see what will happen
-  rake install dry=true
-  
-  # ok, let's do this.
-  rake install
+# clone to ~/dotfiles
+cd ~/dotfiles
+bundle install
+rake symlink
 ```
+
+# Thanks
+
+Thanks to the following people, some are inspirations, others are
+sources of contribution:
+
+* https://github.com/holman/dotfiles
+* https://github.com/sandersch/dotfiles
+* https://github.com/ryanb/dotfiles
+* https://github.com/r00k/dotfiles
