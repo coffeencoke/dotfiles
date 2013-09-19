@@ -1,5 +1,7 @@
 require 'rake'
 
+task :default => [:symlinks, 'vundle:install']
+
 desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
   links = Dir.glob('**/*{.symlink}')
@@ -35,3 +37,10 @@ task :symlinks do
   end
 end
 
+namespace :vundle do
+  desc 'Installs vim bundles'
+  task :install do
+    puts 'Updating vim bundles with vundle. This may take a few minutes...'
+    `vim -u vim.symlink/bundles.vim +BundleInstall +qall`
+  end
+end
