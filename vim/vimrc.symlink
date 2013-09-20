@@ -84,6 +84,14 @@ set list
 "
 set updatecount=20
 
+" Macvim settings
+if has("gui_macvim")
+  " Update for using mac fn, control, alt/option, and command keys
+  let macvim_hig_shift_movement = 1
+  " Remove enormous tab bar at top of macvim
+  set guioptions=egmrt
+endif
+
 " Source other settings from files
 "
 "
@@ -96,10 +104,3 @@ source $HOME/.vim/platform_setup.vim
 
 " Load key mappings
 source $HOME/.vim/key_maps.vim
-
-" Load commands
-" source $HOME/.vim/commands.vim
-
-" Abbreviations are in .vim/after/plugin/abbreviations.vim because we use
-" tpope's vim-abolish to define many of them
-
