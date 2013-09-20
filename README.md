@@ -12,7 +12,7 @@ To install:
 # clone to ~/dotfiles
 cd ~/dotfiles
 bundle install
-rake symlink
+bundle exec rake
 ```
 
 # Thanks
