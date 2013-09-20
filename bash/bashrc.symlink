@@ -41,7 +41,6 @@ if [[ -n "$PS1" ]]; then
 
   # Load all other bash files including aliases
   for FILE in ~/dotfiles/**/*.bash; do
-    echo "Loading $FILE"
     source $FILE
   done
 fi
