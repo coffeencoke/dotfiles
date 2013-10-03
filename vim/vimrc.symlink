@@ -104,3 +104,20 @@ source $HOME/.vim/platform_setup.vim
 
 " Load key mappings
 source $HOME/.vim/key_maps.vim
+
+" CTRLP Mappings
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+if has("gui_macvim")
+  let g:ctrlp_map = '<D-t>'
+else
+  let g:ctrlp_map = '<c-t>'
+endif
+let g:ctrlp_max_files = 0
+let g:ctrlp_working_path_mode = 0
+" Ignore these directories
+set wildignore+=*/out/**
+set wildignore+=*/vendor/**
+set wildignore+=*/log/**
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
