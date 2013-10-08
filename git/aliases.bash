@@ -8,5 +8,6 @@ alias gdc='git diff --cached'
 alias gg='git lg'
 alias gpush='git push'
 alias gpr='git pull --rebase'
+alias gci='gcm'
 
-function gic { git commit -m "'$*'"; }
+function gcm { git commit -m "'$*'"; }
