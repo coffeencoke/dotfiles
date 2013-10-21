@@ -13,7 +13,7 @@ source $HOME/.vim/bundles.vim
 "Enable syntax highlightning and some nice filetype associations
 syntax enable
 filetype plugin indent on
-colorscheme molokai
+colorscheme Tomorrow-Night
 
 " Set console highlights to be readable with black background
 set bg=dark
@@ -57,6 +57,8 @@ set showcmd             " Letting me know I'm in 'leader' mode
 set wildmode=list:longest,full
 set wildmenu
 
+autocmd BufWritePre * :%s/\s\+$//e     " auto remove trailing whitespace
+
 set virtualedit=block
 
 " Care about case only if I use an uppercase letter
@@ -67,7 +69,7 @@ set smartcase
 set vb
 set t_vb=
 
-" Make buffers less annoying, i.e., 
+" Make buffers less annoying, i.e.,
 " keep changed buffers without requiring saves
 set hidden
 
