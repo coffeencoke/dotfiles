@@ -39,9 +39,16 @@ end
 
 namespace :vundle do
   desc 'Installs vim bundles'
-  task :install do
+  task :install => :prepare do
     puts 'Updating vim bundles with vundle. This may take a few minutes...'
     `vim -u vim.symlink/bundles.vim +BundleInstall +qall`
+  end
+
+  desc 'Install vundler'
+  task :prepare do
+    unless File.exists?(File.expand_path("~/.vim/bundle/vundle"))
+      `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+    end
   end
 end
 
