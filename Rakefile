@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => [:symlinks, 'vundle:install']
+task :default => [:symlinks, 'vundle:install', 'brew:install']
 
 desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
@@ -42,5 +42,19 @@ namespace :vundle do
   task :install do
     puts 'Updating vim bundles with vundle. This may take a few minutes...'
     `vim -u vim.symlink/bundles.vim +BundleInstall +qall`
+  end
+end
+
+namespace :brew do
+  desc 'Installs brew packages'
+  task :install do
+    puts "Installing all brews"
+    brews = Dir.glob('**/*{.brew}')
+
+    brews.each do |brew|
+      brew_pkg_name = File.read(brew)
+      puts "Installing #{brew_pkg_name}"
+      `brew install #{brew_pkg_name}`
+    end
   end
 end

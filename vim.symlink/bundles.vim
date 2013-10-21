@@ -28,5 +28,8 @@ Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tsaleh/vim-align'
 Bundle 'tsaleh/vim-matchit'
+Bundle 'eraserhd/vim-ios'
+Bundle 'msanders/cocoa.vim'
+Bundle 'msanders/snipmate.vim'
 
 filetype plugin indent on     " required!
