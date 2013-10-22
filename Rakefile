@@ -4,6 +4,9 @@ task :default => [:symlinks, 'vundle:install', 'brew:install']
 
 desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
+
+  `ln -sf $PWD ~/.dotfiles`
+
   links = Dir.glob('**/*{.symlink}')
 
   skip_all = false

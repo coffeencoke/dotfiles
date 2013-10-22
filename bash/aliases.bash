@@ -52,9 +52,3 @@ elif [ -f /etc/redhat-release ]; then
 elif [ $(uname -s) = "Darwin" ]; then
   alias update_system="brew update && brew upgrade"
 fi
-
-# Simulate OSX's pbcopy and pbpaste on other platforms
-if [ ! $(uname -s) = "Darwin" ]; then
-  alias pbcopy='xsel --clipboard --input'
-  alias pbpaste='xsel --clipboard --output'
-fi

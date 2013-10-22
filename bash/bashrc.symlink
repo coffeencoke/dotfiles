@@ -1,9 +1,14 @@
 # This is ususally the default, but enforce our assumption
 umask 022
 
-# Editor and pager
+# Editor and pager and visual
 export EDITOR=vim
 export PAGER=less
+export VISUAL="vim"
+
+# Colors
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Autocorrect mispelled directories
 shopt -s cdspell
@@ -12,35 +17,3 @@ shopt -s cdspell
 stty start undef
 stty stop undef
 
-# Anything inside here only gets executed in interactive shells
-if [[ -n "$PS1" ]]; then 
-  # don't put duplicate lines in the history. See bash(1) for more options
-  # ... or force ignoredups and ignorespace
-  HISTCONTROL=ignoredups:ignorespace
-
-  # Gimme a huge history
-  export HISTSIZE=10000
-  export HISTFILESIZE=2000
-
-  # Don't store duplicate lines in history
-  export HISTCONTROL=ignoreboth
-
-  # Apend to history instead of overwriting
-  shopt -s histappend
-
-  # Unify histories across screen sessions
-  PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -n"
-
-  # Add paths
-  export PATH="~/dotfiles/bin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-
-  # Enable programmable completion features
-  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
-  fi
-
-  # Load all other bash files including aliases
-  for FILE in ~/dotfiles/**/*.bash; do
-    source $FILE
-  done
-fi
