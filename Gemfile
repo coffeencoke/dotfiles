@@ -1,4 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'rake'
-gem 'terminal-notifier'
+gem 'chef', '~> 11.8'
