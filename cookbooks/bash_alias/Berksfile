@@ -1,3 +1,5 @@
-source :opscode
+site :opscode
 
-depends 'bash_alias_test', path: 'test'
+metadata
+
+cookbook 'bash_alias_test', path: './test'

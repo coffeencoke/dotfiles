@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "bash_alias": {
+      "path": "."
+    },
+    "bash_alias_test": {
+      "path": "./test"
+    }
+  }
+}
