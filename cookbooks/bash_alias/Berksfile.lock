@@ -6,6 +6,9 @@
     "minitest-handler": {
       "locked_version": "1.0.0"
     },
+    "user": {
+      "locked_version": "0.3.0"
+    },
     "bash_alias_test": {
       "path": "./test"
     },

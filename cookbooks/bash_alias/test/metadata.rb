@@ -6,4 +6,4 @@ maintainer_email 'matt.simpson3[at]gmail.com'
 maintainer 'Matt Simpson'
 license 'MIT'
 
-
+depends 'user'
