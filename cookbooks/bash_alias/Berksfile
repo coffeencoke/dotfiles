@@ -1,0 +1,3 @@
+source :opscode
+
+depends 'bash_alias_test', path: 'test'
