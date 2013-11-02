@@ -2,4 +2,7 @@ site :opscode
 
 metadata
 
-cookbook 'bash_alias_test', path: './test'
+group :integration do
+  cookbook "minitest-handler"
+  cookbook 'bash_alias_test', path: './test'
+end
