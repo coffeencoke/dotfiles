@@ -25,44 +25,38 @@ Often there are configuration files for keys, and passwords, and such. I'd rathe
 
 **This is not yet done**
 
-## Pro
+## On Same Computer
 
-*if you already have the chef elements uploaded to a server*
-
-```
-knife 
-```
-
-## Advanced
-
-This currently uses Chef-Zero to contain the cookbooks for converging the servers.
-
-To upload stuff to the cookbooks, like a role and a cookbook for instance, you simply have to set the `-z` option:
+If you are on the same computer that you would like to converge, you will need to use chef zero.
 
 ```
-knife role from file roles/dev_workstation.rb -z
-knife cookbook upload bash_alias -z
+git clone https://github.com/coffeencoke/dotfiles
+cd dotfiles
+bundle install
+knife cookbook upload cookbooks/* -z
+knife role from file roles/* -z
+
+# ... bootstrap instructions here
 ```
 
-And then you can check to see if the role and cookbook was added:
+## From different computer
 
-```
-matt@stella ~/Projects/cookbooks
-$ knife cookbook list -z
-bash_alias   0.1.0
+I like to have continuous integration setup, so that I don't have to manually converge all of my computers.
 
-matt@stella ~/Projects/cookbooks
-$ knife role list -z
-```
+Because of this, I setup a lightweight chef server, with jenkins, that will listen for all repositories that my dotfiles wants to have trigger an update, and then automatically converge all servers.
+
+Because of this, I do not use chef-zero, I use an actual open source chef server. And cookbooks, roles, environments, etc, are all uploaded to that server.
 
 ## Development
 
+I want to be able to develop, and experiment with my dotfiles, without doing something that cripples my actual computer. Because of this, I use a virtual machine to test all dotfiles development.
+
 Install [Vagrant](http://www.vagrantup.com/) and [Virtual Box](https://www.virtualbox.org/wiki/Downloads).
 
-Install the vagrant-chef-zero plugin:
+Install the vagrant-chef-zero, vagrant-omnibus, and vagrant-berkshelf plugins:
 
 ```
-vagrant plugin install vagrant-chef-zero
+vagrant plugin install vagrant-chef-zero vagrant-omnibus vagrant-berkshelf
 ```
 
 Clone the repo and install gems:
@@ -71,10 +65,19 @@ Clone the repo and install gems:
 git clone https://github.com/coffeencoke/dotfiles
 cd dotfiles
 bundle install
+```
+
+Bootup and converge the VM:
+
+```
 vagrant up
 ```
 
+SSH into the server to play around and test your development:
 
+```
+vagrant ssh
+```
 
 # Thanks
 
