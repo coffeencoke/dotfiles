@@ -23,26 +23,6 @@ if [ ! -z "$USE_COLOR_CMDS" ]; then
 fi
 unset USE_COLOR_CMDS
 
-alias ls="$LS_CMD"
-alias ll="$LS_CMD -al"
-alias la="$LS_CMD -A"
-alias l="$LS_CMD -lahrtc"
-
-# Syntax highlighting for less (-R for RAW ^ colors)
-alias less='less -R'
-
-alias path='echo $PATH'
-
-alias so='source ~/.bashrc'
-
-# Verbosely show progress for move and copy
-alias cp='cp -v'
-alias mv='mv -v'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias alert='terminal-notifier -title "Command finished" -message "Your command has finished running"'
 
 # Fully update operating system
 if [ -f /etc/debian_version ]; then

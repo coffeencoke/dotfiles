@@ -8,7 +8,17 @@ default_attributes(
       users: {
         matt: {
           l: 'ls -lha',
-          gst: 'git status'
+          gst: 'git status',
+          ls: "$LS_CMD",
+          ll: "$LS_CMD -al",
+          la: "$LS_CMD -A",
+          l: "$LS_CMD -lahrtc",
+          less: 'less -R',
+          path: 'echo $PATH',
+          so: 'source ~/.bashrc',
+          cp: 'cp -v',
+          mv: 'mv -v',
+          alert: "terminal-notifier -title 'Command finished' -message 'Your command has finished running'",
         }
       }
     }
