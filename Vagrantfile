@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
     v.name = "coffeencoke-dotfiles"
   end
   config.vm.provision :chef_client do |chef|
+    chef.environment = "ubuntu"
     chef.run_list = [
       "role[dev_workstation]"
     ]

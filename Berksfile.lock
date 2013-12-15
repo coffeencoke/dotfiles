@@ -3,7 +3,7 @@
     "bash_alias": {
       "locked_version": "0.1.0",
       "git": "git://github.com/coffeencoke/bash_alias.git",
-      "ref": "758a071d9142877afc1116858aae0fe02747dfeb"
+      "ref": "3ff5dfca7585219898a5986b24261bcad27ebbad"
     },
     "user": {
       "locked_version": "0.3.0"
