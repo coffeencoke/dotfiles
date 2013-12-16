@@ -1,10 +1,10 @@
 name 'base'
 description "Sets up a base computer for coffeencoke"
-run_list 'recipe[bash_alias]'
+run_list 'recipe[bash::aliases]', 'recipe[bash::colors]'
 
 default_attributes(
   {
-    bash_alias: {
+    bash_aliases: {
       users: {
         matt: {
           l: 'ls -lha',

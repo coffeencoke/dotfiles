@@ -1,1 +1,1 @@
-cookbook 'bash_alias', github: 'coffeencoke/bash_alias'
+cookbook 'bash', github: 'coffeencoke/chef-bash'

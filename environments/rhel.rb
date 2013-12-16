@@ -3,7 +3,7 @@ description "Sets up a development workstation for coffeencoke on Redhat Enterpr
 
 default_attributes(
   {
-    bash_alias: {
+    bash_aliases: {
       users: {
         matt: {
           update_system: "sudo bash -c 'yum -y update'",

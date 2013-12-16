@@ -1,9 +1,9 @@
 {
   "sources": {
-    "bash_alias": {
+    "bash": {
       "locked_version": "0.1.0",
-      "git": "git://github.com/coffeencoke/bash_alias.git",
-      "ref": "3ff5dfca7585219898a5986b24261bcad27ebbad"
+      "git": "git://github.com/coffeencoke/chef-bash.git",
+      "ref": "dc29b8ba9f2e8484df9274a0e7c1fa3aed176537"
     },
     "user": {
       "locked_version": "0.3.0"
