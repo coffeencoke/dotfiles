@@ -22,9 +22,3 @@ if [ ! -z "$USE_COLOR_CMDS" ]; then
   alias egrep='egrep --color=auto'
 fi
 unset USE_COLOR_CMDS
-
-
-# Fully update operating system
-if [ -f /etc/redhat-release ]; then
-  alias update_system="sudo bash -c 'yum -y update'"
-fi
