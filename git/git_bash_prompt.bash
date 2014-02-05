@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Set our bash prompt according to the branch/status of the current git 
+# Set our bash prompt according to the branch/status of the current git
 # repository.
 #
 # Taken from http://gist.github.com/31934
@@ -12,6 +12,7 @@
     MAGENTA="\[\e[0;35m\]"
        CYAN="\[\e[0;36m\]"
        GRAY="\[\e[0;37m\]"
+   DIM_GRAY="\[\e[38;5;245m\]"
   LIGHT_RED="\[\e[1;31m\]"
 LIGHT_GREEN="\[\e[1;32m\]"
 LIGHT_YELLOW="\[\e[1;33m\]"
@@ -28,7 +29,7 @@ function is_git_repository {
 function parse_git_branch {
  # Only display git info if we're inside a git repository.
  is_git_repository || return 1
- 
+
  # Capture the output of the "git status" command.
  git_status="$(git status 2> /dev/null)"
  git_stash="$(git stash list 2> /dev/null)"
@@ -43,7 +44,7 @@ function parse_git_branch {
  if [[ -n ${git_stash} ]]; then
    stash="${MAGENTA}*"
  fi
-  
+
  # Set arrow icon based on status against remote.
  if [[ ${git_status} =~ "# Your branch is ahead" ]]; then
    remote="↑"
@@ -52,9 +53,9 @@ function parse_git_branch {
  elif [[ ${git_status} =~ ' have diverged' ]]; then
    remote="↔"
  fi
- 
+
  # Get the name of the branch.
- branch_pattern="^# On branch ([^${IFS}]*)"    
+ branch_pattern="^On branch ([^${IFS}]*)"
  if [[ ${git_status} =~ ${branch_pattern} ]]; then
    branch="(${BASH_REMATCH[1]})"
  else
@@ -77,8 +78,16 @@ function prompt_symbol () {
 
 function prompt_func () {
  last_return_value=$?
- PS1="\u@\h ${YELLOW}\w${COLOR_NONE} $(parse_git_branch)\n$(prompt_symbol $last_return_value) "
+ if [ -z "$SSH_CONNECTION" ]; then
+   host_info="${DIM_GRAY}at ${COLOR_NONE}\h"
+ else
+   from_ip=$(echo $SSH_CONNECTION | cut -d' ' -f1 | tr -d '\n')
+   host_info="${DIM_GRAY}at ${MAGENTA}\h ${DIM_GRAY}(via $from_ip)"
+ fi
+ PS1="\u ${host_info} ${YELLOW}\w${COLOR_NONE} $(parse_git_branch) \@ \n$(prompt_symbol $last_return_value) "
  echo -n -e "\033]0;$USER@$HOSTNAME:$PWD\007\n"
+ history -a
+ history -n
 }
 
 PROMPT_COMMAND=prompt_func
