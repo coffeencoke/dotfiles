@@ -33,7 +33,7 @@ alias less='less -R'
 
 alias path='echo $PATH'
 
-alias so='source ~/.bashrc'
+alias so='source ~/.zshrc'
 
 # Verbosely show progress for move and copy
 alias cp='cp -v'
