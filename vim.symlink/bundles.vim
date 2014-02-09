@@ -8,9 +8,6 @@ Bundle 'gmarik/vundle'
 
 " Cosmetic
 Bundle 'flazz/vim-colorschemes'
-Bundle "bling/vim-airline"
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 
 " Functional
 Bundle 'kien/ctrlp.vim'
@@ -38,6 +35,9 @@ Bundle 'tpope/vim-fugitive'
 " Bundle 'tpope/vim-bundler'
 " Bundle 'tsaleh/vim-align'
 " Bundle 'tsaleh/vim-matchit'
+"Bundle "bling/vim-airline"
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 
 filetype plugin indent on " required!
 
