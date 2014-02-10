@@ -1,0 +1,29 @@
+# This is ususally the default, but enforce our assumption
+umask 022
+
+# Editor and pager and visual
+export EDITOR=vim
+export PAGER=less
+export VISUAL="vim"
+
+# Add paths
+export PATH="~/.zsh/bin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Load all other zsh files including aliases
+for FILE in ~/.dotfiles/**/*.zsh; do
+  source $FILE
+done
+
+# Add a .zsh.local file for any computer specific configuration
+for FILE in ~/dotfiles/**/*.zsh.local(N); do
+  source $FILE
+done
+
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export PROMPT="%{$fg[white]%}%n %{$fg_no_bold[white]%}at %{$fg_bold[white]%}%m %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}%@
+${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}"

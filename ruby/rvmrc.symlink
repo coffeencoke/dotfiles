@@ -1,2 +1,4 @@
-export rvm_path="$HOME/.rvm"
-export rvm_pretty_print=1
+if [ -d $HOME/.rvm ]]
+  export rvm_path="$HOME/.rvm"
+  export rvm_pretty_print=1
+fi
