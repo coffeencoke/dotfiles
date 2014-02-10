@@ -1,6 +1,24 @@
 require 'rake'
 
-task :default => [:symlinks, 'vundle:install', 'brew:install']
+task :default => ['oh_my_zsh:install', :symlinks, 'vundle:install', 'brew:install']
+
+namespace :oh_my_zsh do
+  desc 'Installs oh my zsh'
+  task :install do
+    if File.exists?(File.expand_path("~/.oh-my-zsh"))
+      puts "oh-my-zsh seems to already be installed, overwrite? (Y/n)"
+      answer = STDIN.gets.chomp.downcase
+      unless ["", "y", "yes", "ya"].include?(answer)
+        puts "Fine, be that way"
+        next
+      end
+    end
+
+    puts "Installing oh-my-zsh"
+    `curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh`
+    puts "zsh installed successfully" if $?
+  end
+end
 
 desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
