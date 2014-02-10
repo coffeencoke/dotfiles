@@ -2,7 +2,7 @@
 
 These are config files to set up a system the way I like it.
 
-Currently going through a transition... vim config is not yet setup.  
+Currently going through a transition... vim config is not yet setup.
 
 # Install
 

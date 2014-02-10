@@ -1,6 +1,6 @@
 [user]
   name = Matt Simpson
-	email = matt.simpson3@gmail.com 
+	email = matt.simpson3@gmail.com
 
 [color]
   ui = auto
@@ -11,7 +11,7 @@
   branch = auto
 
 [color "diff"]
-  meta = yellow 
+  meta = yellow
 
 [core]
 	excludesfile = ~/.gitignore
@@ -81,5 +81,3 @@
 
 [github]
 	user = coffeencoke
-[git-pair]
-	authors = Matt Simpson <matt.simpson3@gmail.com>
