@@ -1,6 +1,8 @@
 # This is ususally the default, but enforce our assumption
 umask 022
 
+setopt promptsubst
+
 # Editor and pager and visual
 export EDITOR=vim
 export PAGER=less
@@ -25,5 +27,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PROMPT="%{$fg[white]%}%n %{$fg_no_bold[white]%}at %{$fg_bold[white]%}%m %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}%@
-${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}"
+PROMPT='%{$fg[white]%}%n %{$fg_no_bold[white]%}at %{$fg_bold[white]%}%m %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)
+${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
+RPROMPT='%{$fg_bold[blue]%}%@%{$reset_color%}%{$fg_bold[white]%}'
+
