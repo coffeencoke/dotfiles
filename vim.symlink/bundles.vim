@@ -8,6 +8,7 @@ Bundle 'gmarik/vundle'
 
 " Cosmetic
 Bundle 'flazz/vim-colorschemes'
+Bundle 'altercation/vim-colors-solarized'
 
 " Functional
 Bundle 'kien/ctrlp.vim'
