@@ -11,9 +11,11 @@ let mapleader=","       " Set this early in case other things use it
 source $HOME/.vim/bundles.vim
 
 "Enable syntax highlightning and some nice filetype associations
-syntax enable
 filetype plugin indent on
-colorscheme Tomorrow-Night
+syntax enable
+set background=dark
+colorscheme solarized
+" let g:solarized_termcolors=256
 
 " Set console highlights to be readable with black background
 set bg=dark
