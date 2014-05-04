@@ -123,3 +123,7 @@ set wildignore+=*/vendor/**
 set wildignore+=*/log/**
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+if findfile("~/bin/ack")
+  let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
+endif
