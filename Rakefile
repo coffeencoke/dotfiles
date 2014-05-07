@@ -86,3 +86,12 @@ namespace :brew do
     end
   end
 end
+
+namespace :utils do
+  desc 'Installs ctags 5.8'
+  task :ctags do
+    `cd /tmp && wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz`
+    `cd /tmp && tar -xzf ctags-5.8.tar.gz && rm ctags-5.8.tar.gz`
+    `cd /tmp/ctags-5.8 && ./configure && make && sudo make install && cd ../ && rm -Rf ctags-5.8`
+  end
+end
