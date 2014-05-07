@@ -129,3 +129,6 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 if findfile("~/bin/ack") == $HOME."/bin/ack"
   let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
 endif
+
+" Git commit config
+autocmd Filetype gitcommit setlocal spell textwidth=72
