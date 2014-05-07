@@ -28,6 +28,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'jgdavey/vim-blockle'
+Bundle 'aming/vim-mason'
 
 " Git
 Bundle 'tpope/vim-fugitive'
