@@ -1,11 +1,10 @@
 [color]
   ui = auto
-  interactive = auto
-  status = auto
+	interactive = auto
+	status = auto
   commit = auto
-  diff = auto
-  branch = auto
-  status = auto
+	diff = auto
+	branch = auto
 
 [color "diff"]
   meta = yellow
@@ -64,6 +63,7 @@
   which-tags-contain = name-rev --name-only
   wipe = !git reset --hard; git clean -fd
 	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+	ctags = !.git/hooks/ctags
 
 [help]
 	autocorrect = 1
@@ -80,3 +80,7 @@
 
 [github]
 	user = coffeencoke
+[init]
+	templatedir = ~/.git_template
+[merge]
+	summary = true
