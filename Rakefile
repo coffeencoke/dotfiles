@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => ['oh_my_zsh:install', :symlinks, 'vundle:install', 'brew:install']
+task :default => ['oh_my_zsh:install', :symlinks, :customize_zsh, 'vundle:install', 'brew:install']
 
 namespace :oh_my_zsh do
   desc 'Installs oh my zsh'
@@ -20,27 +20,18 @@ namespace :oh_my_zsh do
   end
 end
 
-desc 'Create symlinks to dotfiles in home directory'
-task :symlinks do
-
-  `ln -sf $PWD ~/.dotfiles`
-
-  links = Dir.glob('**/*{.symlink}')
-
+def symlink_files(files)
   skip_all = false
   overwrite_all = false
   backup_all = false
 
-  links.each do |link_source|
+  files.each do |file, target|
     overwrite = false
     backup = false
 
-    file = link_source.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/.#{file}"
-
     if File.exists?(target) || File.symlink?(target)
       unless skip_all || overwrite_all || backup_all
-        puts "File already exists: #{target}, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
+        puts "Target already exists (#{target}), what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
         case STDIN.gets.chomp
         when 'o' then overwrite = true
         when 'b' then backup = true
@@ -51,11 +42,49 @@ task :symlinks do
         end
       end
       FileUtils.rm_rf(target) if overwrite || overwrite_all
-      `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
+      `mv "#{target}" "#{target}.backup"` if backup || backup_all
     end
 
-    `ln -s "$PWD/#{link_source}" "#{target}"` if !skip_all
+    unless skip_all
+      `ln -s "#{file}" "#{target}"`
+      puts "Wrote symlink: file: #{file}, target: #{target}"
+    end
   end
+end
+
+desc 'Symlinks all files labeled .zsh to ~/.oh-my-zsh/custom/{dir}_{file}.zsh'
+task :customize_zsh do
+  require 'pathname'
+
+  files = Dir.glob('**/*{.zsh}')
+  symlinks = {}
+  files.map do |file|
+    pathname = Pathname.new File.expand_path(file)
+    next if pathname.directory?
+    dirname = pathname.parent.to_s.split("/").last
+    basename = pathname.basename
+    target = File.expand_path(File.join '~/.oh-my-zsh/custom', "#{dirname}_#{basename}")
+    symlinks[pathname.to_s] = target
+  end
+  symlink_files symlinks
+end
+
+desc 'Create symlinks to dotfiles in home directory'
+task :symlinks do
+  require 'pathname'
+
+  `ln -sf $PWD ~/.dotfiles`
+
+  files = Dir.glob('**/*{.symlink}')
+  symlinks = {}
+  files.each do |file|
+    pathname = Pathname.new File.expand_path(file)
+    next if pathname.directory?
+    basename = pathname.basename.to_s.gsub(/.symlink$/, '')
+    target = File.expand_path(File.join '~', ".#{basename}")
+    symlinks[pathname.to_s] = target
+  end
+  symlink_files symlinks
 end
 
 namespace :vundle do

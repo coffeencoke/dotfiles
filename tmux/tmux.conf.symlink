@@ -1,0 +1,25 @@
+# Remap window navigation to vim
+unbind-key j
+bind-key j select-pane -D
+unbind-key k
+bind-key k select-pane -U
+unbind-key h
+bind-key h select-pane -L
+unbind-key l
+bind-key l select-pane -R
+
+# Allow scrolling in outer terminal like iTerm2
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+
+# remap prefix to Control + a
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+# force a reload of the config file
+unbind r
+bind r source-file ~/.tmux.conf
+
+# quick pane cycling
+unbind ^A
+bind ^A select-pane -t :.+

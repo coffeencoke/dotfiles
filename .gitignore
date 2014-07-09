@@ -1,4 +1,4 @@
 .swp
-*.local
+*.local*
 .bundle
 vim.symlink/bundle
