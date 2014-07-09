@@ -73,17 +73,24 @@ desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
   require 'pathname'
 
-  `ln -sf $PWD ~/.dotfiles`
+  dotfiles_dir = File.expand_path(__FILE__, '..')
 
-  files = Dir.glob('**/*{.symlink}')
-  symlinks = {}
-  files.each do |file|
+  symlinks = { dotfiles_dir => File.expand_path('~', '.dotfiles') }
+  Dir.glob('**/*{.symlink}').each do |file|
     pathname = Pathname.new File.expand_path(file)
     next if pathname.directory?
     basename = pathname.basename.to_s.gsub(/.symlink$/, '')
     target = File.expand_path(File.join '~', ".#{basename}")
     symlinks[pathname.to_s] = target
   end
+  Dir.glob('**/*{.bin}').each do |file|
+    pathname = Pathname.new File.expand_path(file)
+    next if pathname.directory?
+    basename = pathname.basename.to_s.gsub(/.bin$/, '').gsub(".local", "")
+    target = File.expand_path(File.join '~/bin', basename)
+    symlinks[pathname.to_s] = target
+  end
+
   symlink_files symlinks
 end
 
