@@ -14,3 +14,5 @@ source $ZSH/oh-my-zsh.sh
 PROMPT='%{$fg[white]%}%n %{$fg_no_bold[white]%}at %{$fg_bold[white]%}%m %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)
 ${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
 RPROMPT='%{$fg_bold[blue]%}%@%{$reset_color%}%{$fg_bold[white]%}'
+
+PATH=~/bin:$PATH
