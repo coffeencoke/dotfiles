@@ -20,6 +20,7 @@ Bundle 'taglist.vim'
 Bundle 'cperl82/bufexplorer'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ZoomWin'
+Bundle 'tpope/vim-commentary'
 
 " Language Specific
 Bundle 'kchmck/vim-coffee-script'
