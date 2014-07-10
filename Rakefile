@@ -73,9 +73,9 @@ desc 'Create symlinks to dotfiles in home directory'
 task :symlinks do
   require 'pathname'
 
-  dotfiles_dir = File.expand_path(__FILE__, '..')
+  dotfiles_dir = File.expand_path('../', __FILE__)
 
-  symlinks = { dotfiles_dir => File.expand_path('~', '.dotfiles') }
+  symlinks = { dotfiles_dir => File.expand_path(File.join('~', '.dotfiles')) }
   Dir.glob('**/*{.symlink}').each do |file|
     pathname = Pathname.new File.expand_path(file)
     next if pathname.directory?
