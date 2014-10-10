@@ -21,6 +21,8 @@ Bundle 'cperl82/bufexplorer'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ZoomWin'
 Bundle 'tpope/vim-commentary'
+Bundle 'Align'
+Bundle 'christoomey/vim-tmux-navigator'
 
 " Language Specific
 Bundle 'kchmck/vim-coffee-script'
