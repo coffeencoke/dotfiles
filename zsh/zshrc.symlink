@@ -17,3 +17,6 @@ ${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
 RPROMPT='%{$fg_bold[blue]%}%@%{$reset_color%}%{$fg_bold[white]%}'
 
 PATH=~/bin:$PATH
+
+# Fixes my backspace when in vim
+stty erase 
