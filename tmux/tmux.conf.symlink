@@ -23,3 +23,7 @@ bind r source-file ~/.tmux.conf
 # quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
+
+# preserve ctrl a
+unbind a
+bind a send-prefix
