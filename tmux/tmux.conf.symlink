@@ -1,6 +1,3 @@
-# Allow scrolling in outer terminal like iTerm2
-set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-
 # remap prefix to Control + a
 set -g prefix C-a
 unbind C-b
