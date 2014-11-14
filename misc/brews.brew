@@ -1,0 +1,11 @@
+autoconf
+automake
+libevent
+libgpg-error
+libksba
+libtool
+libyaml
+openssl
+pkg-config
+readline
+wget

@@ -20,3 +20,5 @@ PATH=~/bin:$PATH
 
 # Fixes my backspace when in vim
 stty erase 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
