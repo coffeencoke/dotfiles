@@ -1,3 +1,6 @@
+# Use zsh
+set-option -g default-shell /bin/zsh
+
 # remap prefix to Control + a
 set -g prefix C-a
 unbind C-b
