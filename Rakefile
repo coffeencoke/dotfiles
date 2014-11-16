@@ -1,6 +1,6 @@
 require 'rake'
 
-task :default => ['oh_my_zsh:install', :symlinks, :customize_zsh, 'vundle:install', 'brew:install', 'utils:ctags']
+task :default => ['oh_my_zsh:install', :symlinks, :customize_zsh, 'vundle:install', 'brew:install_packages', 'utils:ctags']
 
 namespace :oh_my_zsh do
   desc 'Installs oh my zsh'
@@ -112,8 +112,20 @@ namespace :vundle do
 end
 
 namespace :brew do
-  desc 'Installs brew packages'
+  desc 'Installs homebrew'
   task :install do
+    `which brew`
+    unless $? == 0
+      fail <<-oec
+You must install homebrew, please run this command:"
+
+  fail %(  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+oec
+    end
+  end
+
+  desc 'Installs brew packages'
+  task :install_packages => :install do
     STDERR.puts "Installing all brews"
     brews = Dir.glob('**/*{.brew}')
 
