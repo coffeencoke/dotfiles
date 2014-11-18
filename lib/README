@@ -1,0 +1,4 @@
+Place Ruby libraries here.
+
+Use a library from lib/amazon/my-library.rb like this:
+require 'amazon/my-library.rb'

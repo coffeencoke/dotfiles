@@ -1,0 +1,45 @@
+# -*-perl-*-
+
+package.Mattsimp-dotfiles = {
+    interfaces = (1.0);
+
+    build-system = brazilrake;
+    build-environment = {
+        chroot = basic;
+        network-access = blocked;
+    };
+
+    build-tools = {
+        1.0 = {
+            BrazilRake = 1.1;
+            Ruby19 = 1.0;
+            JRuby17x = 1.0;
+        };
+    };
+
+    dependencies = {
+        1.0 = {
+        };
+    };
+
+    runtime-dependencies = {
+        1.0 = {
+            # If you're building a library, you don't need a runtime
+            # dependency on Ruby. If you're writing a top-level
+            # package, uncomment the following line to add a
+            # dependency on ruby
+            # Ruby = 1.9;
+        };
+    };
+
+    test-dependencies = {
+        1.0 = {
+            RubyGem-rspec = 2.14.x;
+        };
+    };
+
+    targets = {
+        # See Rakefile for build logic
+        ruby = { type = ruby; };
+    };
+};
