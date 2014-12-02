@@ -114,26 +114,30 @@ end
 namespace :brew do
   desc 'Installs homebrew'
   task :install do
-    `which brew`
-    unless $? == 0
-      fail <<-oec
+    if `uname` == 'Darwin'
+      `which brew`
+      unless $? == 0
+        fail <<-oec
 You must install homebrew, please run this command:"
 
   fail %(  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 oec
+      end
     end
   end
 
   desc 'Installs brew packages'
   task :install_packages => :install do
-    STDERR.puts "Installing all brews"
-    brews = Dir.glob('**/*{.brew}')
+    if `uname` == 'Darwin'
+      STDERR.puts "Installing all brews"
+      brews = Dir.glob('**/*{.brew}')
 
-    brews.each do |brew_file|
-      STDERR.puts "Found brews in #{brew_file}"
-      File.open(brew_file).each_line do |brew_package|
-        STDERR.puts "Installing #{brew_package}"
-        STDERR.puts `brew install #{brew_package}`
+      brews.each do |brew_file|
+        STDERR.puts "Found brews in #{brew_file}"
+        File.open(brew_file).each_line do |brew_package|
+          STDERR.puts "Installing #{brew_package}"
+          STDERR.puts `brew install #{brew_package}`
+        end
       end
     end
   end
