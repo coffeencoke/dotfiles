@@ -30,6 +30,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'ecomba/vim-ruby-refactoring'
+  " Required by ruby-refactoring
+  Bundle 'edsono/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'aming/vim-mason'
 
@@ -39,7 +41,6 @@ Bundle 'tpope/vim-fugitive'
 " Consider pulling in
 " Bundle 'tpope/vim-bundler'
 " Bundle 'tsaleh/vim-align'
-" Bundle 'tsaleh/vim-matchit'
 "Bundle "bling/vim-airline"
 "let g:airline_left_sep=''
 "let g:airline_right_sep=''

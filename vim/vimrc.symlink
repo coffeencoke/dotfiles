@@ -347,3 +347,7 @@ nnoremap <leader>a :Ack!<space>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " }}}
+
+" Splitting
+set splitbelow
+set splitright

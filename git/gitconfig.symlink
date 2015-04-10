@@ -98,3 +98,5 @@
   default = tracking
 [diff]
   algorithm = patience
+[amazon]
+	pull-request-by-default = false

@@ -7,8 +7,8 @@ unbind C-b
 bind C-a send-prefix
 
 # force a reload of the config file
-unbind r
-bind r source-file ~/.tmux.conf
+#unbind r
+#bind r source-file ~/.tmux.conf
 
 # preserve ctrl a
 unbind a
