@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (10.1.0)
+    terminal-notifier (1.5.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake
+  terminal-notifier

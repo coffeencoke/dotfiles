@@ -1,0 +1,353 @@
+" Deal with unicode characters even if system locale is incorrect
+scriptencoding utf8
+
+" Turn off any vi compatibility
+set nocompatible
+set shortmess+=I        " Don't show the Vim welcome screen
+
+let mapleader=","       " Set this early in case other things use it
+
+" Vundle and bundles configuration
+source $HOME/.vim/bundles.vim
+
+"Enable syntax highlightning and some nice filetype associations
+filetype plugin indent on
+syntax enable
+set background=dark
+set bg=dark
+"set background=light
+"set bg=light
+colorscheme solarized
+" let g:solarized_termcolors=256
+
+
+" Make GUI colors light on dark
+hi Normal guibg=black guifg=white
+
+" Make pasting work much better
+nmap <silent> <S-Insert> :set paste<CR>"+p:set nopaste<CR>
+
+set autoindent          " Copy indent from current line for new line
+set nosmartindent       " 'smartindent' breaks right-shifting of # lines
+
+set history=10000       " Remember this many commands
+
+set number              " Display line numbers
+set numberwidth=4       " Minimum number of columns to show for line numbers
+set ruler               " Always show the cursor position
+set showmode            " Always show the mode
+set showcmd             " Display incomplete commands
+set incsearch           " Do incremental searching (as you type)
+set hlsearch            " Highlight the latest search pattern
+set laststatus=2        " Always show a status line
+
+set splitright          " Split new vertical windows right of current window
+
+set winminheight=0      " Allow windows to shrink to status line.
+set winminwidth=0       " Allow windows to shrink to vertical separator.
+
+set lbr                 " Wrap line on word boundaries
+set wrap
+
+set expandtab           " Insert spaces for <Tab> press; use spaces to indent.
+set smarttab            " Tab respects 'shiftwidth', 'tabstop', 'softtabstop'.
+set tabstop=2           " Set the visible width of tabs.
+set softtabstop=2       " Edit as if tabs are 2 characters wide.
+set shiftwidth=2        " Number of spaces to use for indent and unindent.
+set shiftround          " Round indent to a multiple of 'shiftwidth'.
+set showcmd             " Letting me know I'm in 'leader' mode
+
+set wildmode=list:longest,full
+set wildmenu
+
+autocmd BufWritePre * :%s/\s\+$//e     " auto remove trailing whitespace
+
+set virtualedit=block
+
+" Care about case only if I use an uppercase letter
+set ignorecase
+set smartcase
+
+" Set visual bell to nothing
+set vb
+set t_vb=
+
+" Make buffers less annoying, i.e.,
+" keep changed buffers without requiring saves
+set hidden
+
+" Act more 'normal' about backspacing
+" e.g. to backspace past start of edit
+set backspace=indent,eol,start
+
+set whichwrap+=<,>,[,]
+
+set listchars=tab:>-,trail:·
+set list
+
+" Update the swap file every 20 characters. I don't like to lose stuff.
+"
+set updatecount=20
+
+" Macvim settings
+if has("gui_macvim")
+  " Update for using mac fn, control, alt/option, and command keys
+  let macvim_hig_shift_movement = 1
+  " Remove enormous tab bar at top of macvim
+  set guioptions=egmrt
+endif
+
+" Source other settings from files
+"
+"
+
+" Load custom file type extensions
+source $HOME/.vim/myfiletypes.vim
+
+" Load platform specific settings
+source $HOME/.vim/platform_setup.vim
+
+" Load key mappings
+source $HOME/.vim/key_maps.vim
+
+" CTRLP Mappings
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+if has("gui_macvim")
+  let g:ctrlp_map = '<D-t>'
+else
+  let g:ctrlp_map = '<c-t>'
+endif
+let g:ctrlp_max_files = 0
+let g:ctrlp_working_path_mode = 0
+" Ignore these directories
+set wildignore+=*/out/**
+set wildignore+=*/vendor/**
+set wildignore+=*/log/**
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+if findfile("~/bin/ack") == $HOME."/bin/ack"
+  let g:ackprg="~/bin/ack -H --nocolor --nogroup --column"
+endif
+
+" Git commit config
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Taken from Steve Losh's dotfiles
+" https://github.com/sjl/dotfiles/blob/eea18b00b8c74943f5094fddf91d3c2a7e0a7242/vim/vimrc#L534
+" Folding ----------------------------------------------------------------- {{{
+
+set foldlevelstart=1000
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" "Refocus" folds
+nnoremap ,z zMzvzz
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
+
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+" CSS and LessCSS {{{
+
+augroup ft_css
+    au!
+
+    au BufNewFile,BufRead *.less setlocal filetype=less
+
+    au Filetype less,css setlocal foldmethod=marker
+    au Filetype less,css setlocal foldmarker={,}
+    au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+    au Filetype less,css setlocal iskeyword+=-
+
+    " Use <leader>S to sort properties.  Turns this:
+    "
+    "     p {
+    "         width: 200px;
+    "         height: 100px;
+    "         background: red;
+    "
+    "         ...
+    "     }
+    "
+    " into this:
+
+    "     p {
+    "         background: red;
+    "         height: 100px;
+    "         width: 200px;
+    "
+    "         ...
+    "     }
+    au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+    " positioned inside of them AND the following code doesn't get unfolded.
+    au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+augroup END
+
+" HTML and HTMLDjango {{{
+
+let g:html_indent_tags = ['p', 'li']
+
+augroup ft_html
+    au!
+
+    au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+    au FileType html,jinja,htmldjango setlocal foldmethod=manual
+
+    " Use <localleader>f to fold the current tag.
+    au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>f Vatzf
+
+    " Use <localleader>t to fold the current templatetag.
+    au FileType html,jinja,htmldjango nmap <buffer> <localleader>t viikojozf
+
+    " Indent tag
+    au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
+
+    " Django tags
+    au FileType jinja,htmldjango inoremap <buffer> <c-t> {%<space><space>%}<left><left><left>
+
+    " Django variables
+    au FileType jinja,htmldjango inoremap <buffer> <c-f> {{<space><space>}}<left><left><left>
+augroup END
+
+" }}}
+" Java {{{
+
+augroup ft_java
+    au!
+
+    au FileType java setlocal foldmethod=marker
+    au FileType java setlocal foldmarker={,}
+augroup END
+
+" }}}
+" Javascript {{{
+
+augroup ft_javascript
+    au!
+
+    au FileType javascript setlocal foldmethod=marker
+    au FileType javascript setlocal foldmarker={,}
+
+    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+    " positioned inside of them AND the following code doesn't get unfolded.
+    au Filetype javascript inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+augroup END
+
+" Markdown {{{
+
+augroup ft_markdown
+    au!
+
+    au BufNewFile,BufRead *.m*down setlocal filetype=markdown
+
+    " Use <localleader>1/2/3 to add headings.
+    au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=:redraw<cr>
+    au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-:redraw<cr>
+    au Filetype markdown nnoremap <buffer> <localleader>3 mzI###<space>`zllll <ESC>
+augroup END
+
+" Nginx {{{
+
+augroup ft_nginx
+    au!
+
+    au BufRead,BufNewFile /etc/nginx/conf/*                      set ft=nginx
+    au BufRead,BufNewFile /etc/nginx/sites-available/*           set ft=nginx
+    au BufRead,BufNewFile /usr/local/etc/nginx/sites-available/* set ft=nginx
+    au BufRead,BufNewFile vhost.nginx                            set ft=nginx
+
+    au FileType nginx setlocal foldmethod=marker foldmarker={,}
+augroup END
+
+" Python {{{
+
+augroup ft_python
+    au!
+
+    au FileType python setlocal define=^\s*\\(def\\\\|class\\)
+    au FileType man nnoremap <buffer> <cr> :q<cr>
+
+    " Jesus tapdancing Christ, built-in Python syntax, you couldn't let me
+    " override this in a normal way, could you?
+    au FileType python if exists("python_space_error_highlight") | unlet python_space_error_highlight | endif
+
+    " Jesus, Python.  Five characters of punctuation for a damn string?
+    au FileType python inoremap <buffer> <c-g> _(u'')<left><left>
+
+    au FileType python inoremap <buffer> <c-b> """"""<left><left><left>
+augroup END
+
+" QuickFix {{{
+
+augroup ft_quickfix
+    au!
+    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap tw=0
+augroup END
+
+" }}}
+
+" Ruby {{{
+
+augroup ft_ruby
+    au!
+    au Filetype ruby setlocal foldmethod=syntax
+augroup END
+
+" }}}
+
+" Vagrant {{{
+
+augroup ft_vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set ft=ruby
+augroup END
+
+" }}}
+" Vim {{{
+
+augroup ft_vim
+    au!
+
+    au FileType vim setlocal foldmethod=marker
+    au FileType help setlocal textwidth=78
+    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+augroup END
+
+" }}}
+
+" }}}
+" Plugin settings --------------------------------------------------------- {{{
+
+" Ack {{{
+
+nnoremap <leader>a :Ack!<space>
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" }}}
+
+" Splitting
+set splitbelow
+set splitright
