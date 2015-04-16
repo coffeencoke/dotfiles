@@ -13,16 +13,17 @@ source $HOME/.vim/bundles.vim
 "Enable syntax highlightning and some nice filetype associations
 filetype plugin indent on
 syntax enable
-set background=dark
-set bg=dark
-"set background=light
-"set bg=light
+let termvarient=$termvarient
+if termvarient == 'dark'
+  set background=dark
+  set bg=dark
+  hi Normal guibg=black guifg=white
+else
+  set background=light
+  set bg=light
+  hi Normal guibg=white guifg=black
+endif
 colorscheme solarized
-" let g:solarized_termcolors=256
-
-
-" Make GUI colors light on dark
-hi Normal guibg=black guifg=white
 
 " Make pasting work much better
 nmap <silent> <S-Insert> :set paste<CR>"+p:set nopaste<CR>

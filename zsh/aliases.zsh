@@ -8,3 +8,12 @@ alias background_job_mode='setopt NO_HUP; setopt NO_CHECK_JOBS'
 logs_by_type() {
   ls $* | sed 's/\..*//' | uniq
 }
+
+termlight(){
+  export termvarient=light
+  source ~/.zshrc
+}
+termdark(){
+  export termvarient=dark
+  source ~/.zshrc
+}
