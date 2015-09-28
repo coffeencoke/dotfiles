@@ -100,3 +100,4 @@
   algorithm = patience
 [amazon]
 	pull-request-by-default = false
+	suggest-gitfarm-client = shown
