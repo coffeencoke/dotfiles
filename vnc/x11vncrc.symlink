@@ -1,0 +1,14 @@
+# Allow multiple clients
+shared
+# Continuously run (not just for one session)
+forever
+# Run in the background like a daemon
+bg
+# Find the password file using the normal places (read man page for details)
+usepw
+# Always use VNC display 0
+rfbport 5900
+# Bind only to the loopback--I use SSH tunnels
+localhost
+# Change resolution to widescreen monitor
+geometry 1920x1080

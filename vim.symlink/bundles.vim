@@ -17,12 +17,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'taglist.vim'
+Bundle 'tpope/vim-unimpaired'
+
 Bundle 'cperl82/bufexplorer'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ZoomWin'
 Bundle 'tpope/vim-commentary'
 Bundle 'Align'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'zephod/vim-iterm2-navigator'
+
+" Snippets
+"Bundle 'SirVer/ultisnips'
+"Bundle 'honza/vim-snippets'
 
 " Language Specific
 Bundle 'kchmck/vim-coffee-script'
@@ -30,10 +37,13 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'ecomba/vim-ruby-refactoring'
-  " Required by ruby-refactoring
-  Bundle 'edsono/vim-matchit'
+Bundle 'isRuslan/vim-es6'
+" Required by ruby-refactoring
+Bundle 'edsono/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'aming/vim-mason'
+Bundle 'mxw/vim-jsx'
+Bundle 'tpope/vim-haml'
 
 " Git
 Bundle 'tpope/vim-fugitive'

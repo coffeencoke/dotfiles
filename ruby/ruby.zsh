@@ -1,3 +1,3 @@
 export GEM_PATH=~/.gems
-path+=(~/.gems/bin/)
+path+=(~/.gems/bin)
 

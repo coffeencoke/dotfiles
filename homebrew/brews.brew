@@ -9,3 +9,6 @@ openssl
 pkg-config
 readline
 wget
+ack
+mosh
+tmux

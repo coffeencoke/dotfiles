@@ -7,8 +7,8 @@ unbind C-b
 bind C-a send-prefix
 
 # force a reload of the config file
-#unbind r
-#bind r source-file ~/.tmux.conf
+unbind r
+bind r source-file ~/.tmux.conf
 
 # preserve ctrl a
 unbind a
@@ -36,3 +36,13 @@ bind-key l select-pane -R
 # quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
+
+# Highlighting per pane
+# set -g mouse on
+
+    set-option -gq mouse-utf8 on
+    set-option -gq mouse-resize-pane on
+    set-option -gq mouse-select-pane on
+    set-option -gq mouse-select-window on
+    set-window-option -gq mode-mouse on
+

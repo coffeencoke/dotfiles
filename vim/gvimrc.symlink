@@ -3,3 +3,4 @@ if has("gui_macvim")
 endif
 
 set guifont=Menlo\ Regular:h14
+

@@ -13,22 +13,14 @@ vmap <C-j> ]egv
 map <leader>n :NERDTreeToggle<CR>
 
 " CtrlP maps
-map <leader>t :CtrlP<CR>
+"map <leader>t :CtrlP<CR>
 map <C-p> :CtrlP<CR>
-map <leader>p :CtrlPMixed<CR>
+" map <leader>p :CtrlPMixed<CR>
 map <leader>b :CtrlPBuffer<CR>
 map <leader>m :CtrlPMRU<CR>
 
-" I hit <F1> more often when trying to hit ESC than when I want :help
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
-" Strip all the trailing whitespace in the current file
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
 " Make it easier to invoke ack for searching
-nnoremap <leader>a :Ack<SPACE>
+nnoremap <leader>a :Ack!<space>
 
 " Reselect last pasted text. Makes it easy to adjust indention, etc
 nnoremap <leader>v V`]
@@ -55,4 +47,17 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
+" Folding
+nnoremap <Space> za " Space to toggle folds.
+vnoremap <Space> za " Space to toggle folds.
+nnoremap ,z zMzvzz " "Refocus" folds
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
 
+"maps to close, and open list window
+map <silent> <Leader>tc :TlistClose<CR>
+map <silent> <Leader>to :TlistOpen<CR>
+
+"Map \e to edit a file from the directory of the current buffer
+nmap <Leader>e :e <C-R>=expand("%:p:h") . "/"<CR>

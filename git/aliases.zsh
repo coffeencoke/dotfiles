@@ -11,3 +11,4 @@ alias gpr='git pull --rebase'
 alias gci='gcm'
 
 function gcm { git commit -m "'$*'"; }
+function git-recursive { find . -name .git -type d -execdir pwd \; -execdir git "$@" \; }

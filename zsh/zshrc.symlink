@@ -8,27 +8,37 @@ export EDITOR=vim
 export PAGER=less
 export VISUAL="vim"
 
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(git)
+# Defaults to dark theme, other option is LIGHT
+export TERM_COLOR=${TERM_COLOR-DARK}
+
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_THEME="robbyrussell"
+export plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
-if [ -z "$termvarient" ]; then
-  export termvarient=dark
-fi
-
-if [ "$termvarient" = "dark" ]; then
-  textColor=white
+# Set the computer name to Diane if on laptop, we're not allowed to actually
+# change our computer's names :(
+#RPROMPT=%{$fg_bold[cyan]%}%@%{$reset_color%}
+if ~/bin/isDevDesktop; then
+  PROMPT='$USER@Diane %{$fg[cyan]%}%c%{$reset_color%}
+%{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
 else
-  textColor=black
+  PROMPT='$USER@Diane %{$fg[cyan]%}%c%{$reset_color%}
+%{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
 fi
-local ret_status="%(?:%{$fg_bold[green]%}$:%{$fg_bold[red]%}$%s)"
-PROMPT='%{$fg[$textColor]%}%n %{$fg_no_bold[$textColor]%}at %{$fg_bold[$textColor]%}%m %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)
-${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
-RPROMPT='%{$fg_bold[blue]%}%@%{$reset_color%}%{$fg_bold[$textColor]%}'
-
-# Fixes my backspace when in vim
-stty erase 
 
 path=(~/bin "$path[@]")
+path+=(/usr/local/bin)
+path=(/usr/local/sbin $path)
+path+=(/Users/mattsimp/Library/Python/2.7/bin)
+# Make all path modifications persist to child processes
 export PATH
+
+eval "$(rbenv init -)"
+
+# iterm shell integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval $(thefuck --alias)
