@@ -25,6 +25,8 @@
 	</array>
 	<key>Default Bookmark Guid</key>
 	<string>48966BB0-8DE2-4766-B7B0-38E98CB22705</string>
+	<key>EnableProxyIcon</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -215,17 +217,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>490 304 700 622 0 0 1680 1027 </string>
+	<string>-903 1513 700 622 -1833 900 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>516 523 796 473 0 0 1680 1027 </string>
+	<string>516 472 918 512 0 0 1680 1027 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>-2536 1633 592 584 -2766 800 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 4 1680 1023 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>0 4 1440 873 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 31 1676 996 0 0 1680 1027 </string>
+	<string>0 27 1680 1000 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>727 930 2551 1387 727 900 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -465,7 +467,7 @@
 			<key>Columns</key>
 			<integer>80</integer>
 			<key>Command</key>
-			<string>TERM_COLOR=DARK</string>
+			<string></string>
 			<key>Cursor Boost</key>
 			<real>0.0</real>
 			<key>Cursor Color</key>
@@ -863,6 +865,8 @@
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
+			<key>Scrollback in Alternate Screen</key>
+			<false/>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3047,6 +3051,10 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>FF074E20-EBFE-4500-B3E1-4368FEC6529C</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNewWindowOrTabFromTmuxOpensTmux</key>
 	<true/>
 	<key>NoSyncNewWindowOrTabFromTmuxOpensTmux_selection</key>
@@ -3059,8 +3067,12 @@
 	<false/>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
+	<key>OpenArrangementAtStartup</key>
+	<false/>
+	<key>OpenNoWindowsAtStartup</key>
+	<false/>
 	<key>OpenTmuxWindowsIn</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
@@ -3113,7 +3125,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-07-12T05:37:56Z</date>
+	<date>2018-07-18T18:23:23Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -3123,7 +3135,7 @@
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TabViewType</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Notes</string>
