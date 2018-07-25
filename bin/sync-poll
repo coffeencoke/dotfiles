@@ -1,0 +1,22 @@
+#!/bin/sh
+# Syncs the repositories every $1 seconds, 60 by default
+#
+# Usage
+#  ./bin/sync-poll [60]
+#
+# Writes output to logs/sync.log
+DEFAULT_TIME_INTERVAL_IN_SECONDS=60
+LOG_DIR=logs
+LOG_FILE=$LOG_DIR/$(basename $0).log
+
+# Set default time interval or use $1
+TIME_INTERVAL_IN_SECONDS=${1:-$DEFAULT_TIME_INTERVAL_IN_SECONDS}
+
+echo Logging to $LOG_FILE
+mkdir -p $LOG_DIR 2> /dev/null
+
+while true; do
+  ./bin/sync 2>&1 | tee -a logs/sync.log
+  echo sleeping $TIME_INTERVAL_IN_SECONDS seconds
+  sleep $TIME_INTERVAL_IN_SECONDS
+done

@@ -1,0 +1,20 @@
+#!/bin/sh
+# Syncs this git repository
+#
+# Usage:
+#
+#   ./bin/sync
+#
+echo "START SYNC $(date)"
+HAS_CHANGES=$(git status --porcelain)
+if [ -n "$HAS_CHANGES" ]; then
+  echo "has changes"
+  git add .
+  git commit -m "Auto update"
+fi
+# Always pull
+git pull
+# Always push
+git push
+echo "END SYNC `date`"
+
