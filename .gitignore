@@ -2,3 +2,4 @@
 *.local*
 .bundle
 vim.symlink/bundle
+logs
