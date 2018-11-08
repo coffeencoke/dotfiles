@@ -9,36 +9,50 @@ export PAGER=less
 export VISUAL="vim"
 
 # Defaults to dark theme, other option is LIGHT
-export TERM_COLOR=${TERM_COLOR-DARK}
+DARK_TERM_COLOR=DARK
+LIGHT_TERM_COLOR=LIGHT
+DEFAULT_TERM_COLOR=$DARK_TERM_COLOR
+TERM_COLOR=${TERM_COLOR:-$DEFAULT_TERM_COLOR}
+export $TERM_COLOR
+
+dark_mode() {
+  export TERM_COLOR=$DARK_TERM_COLOR
+}
+light_mode() {
+  export TERM_COLOR=$LIGHT_TERM_COLOR
+}
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="robbyrussell"
-export plugins=(git)
+plugins=(git, zsh-autosuggestions)
+export plugins
 source $ZSH/oh-my-zsh.sh
 
 # Set the computer name to Diane if on laptop, we're not allowed to actually
 # change our computer's names :(
-#RPROMPT=%{$fg_bold[cyan]%}%@%{$reset_color%}
 if ~/bin/isDevDesktop; then
-  PROMPT='$USER@Diane %{$fg[cyan]%}%c%{$reset_color%}
+  PROMPT='$USER@DevDesktop %{$fg[cyan]%}%c%{$reset_color%}
 %{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
 else
   PROMPT='$USER@Diane %{$fg[cyan]%}%c%{$reset_color%}
 %{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
 fi
 
-path=(~/bin "$path[@]")
 path+=(/usr/local/bin)
-path=(/usr/local/sbin $path)
+path+=(/usr/local/sbin)
+path+=(~/bin)
 path+=(/Users/mattsimp/Library/Python/2.7/bin)
 # Make all path modifications persist to child processes
 export PATH
 
-eval "$(rbenv init -)"
+# Rehash in the background to make this faster
+# https://github.com/carsomyr/rbenv-bundler/issues/33
+eval "$(rbenv init --no-rehash -)"
+(rbenv rehash &) 2> /dev/null
 
-# iterm shell integration
+# # iterm shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval $(thefuck --alias)
+which thefuck 2&> /dev/null && eval $(thefuck --alias)

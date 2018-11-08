@@ -18,7 +18,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'taglist.vim'
 Bundle 'tpope/vim-unimpaired'
-
 Bundle 'cperl82/bufexplorer'
 Bundle 'tpope/vim-eunuch'
 Bundle 'ZoomWin'
@@ -26,6 +25,8 @@ Bundle 'tpope/vim-commentary'
 Bundle 'Align'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'zephod/vim-iterm2-navigator'
+Bundle 'scrooloose/syntastic'
+Bundle 'dbeniamine/cheat.sh-vim'
 
 " Snippets
 "Bundle 'SirVer/ultisnips'

@@ -92,7 +92,8 @@
   algorithm = patience
 [user]
 	name = Matt Simpson
-	email = matt.simpson3@gmail.com
+	; email = matt.simpson3@gmail.com
+	email = mattsimp@amazon.com
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
