@@ -55,4 +55,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-which thefuck 2&> /dev/null && eval $(thefuck --alias)
+# only load thefuck if it is installed
+which thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
