@@ -23,6 +23,15 @@ Other options, which can be chained:
 bundle exec rake dryrun force debug default
 ```
 
+# Manual Setup
+
+The following should be manually installed:
+
+- [thefuck](https://github.com/nvbn/thefuck)*
+- [fzf](https://github.com/junegunn/fzf)*
+
+\* Installed on mac using Homebrew
+
 # Contribute
 
 Add files with the followingn extensions to update the dotfiles:
