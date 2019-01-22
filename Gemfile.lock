@@ -1,6 +1,5 @@
-GIT
-  remote: git@github.com:coffeencoke/dotfiles_bootstrap.git
-  revision: 7a25697fcb68941390cc9754d1a49118fdfc8037
+PATH
+  remote: ..
   specs:
     dotfiles_bootstrap (1.0.0)
 

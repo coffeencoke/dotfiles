@@ -91,14 +91,14 @@
 [diff]
   algorithm = patience
 [user]
-	name = Matt Simpson
-	; email = matt.simpson3@gmail.com
-	email = mattsimp@amazon.com
+	name = "Matt Simpson 🦊"
+	email = matt.simpson3@gmail.com
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 
-[includeIf "gitdir:mattsimp/"]
-    path = ~/.gitamazonconfig
+[include]
+    path = ~/.gitconditionals
+

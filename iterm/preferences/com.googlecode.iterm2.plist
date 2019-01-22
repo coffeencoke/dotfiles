@@ -217,7 +217,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1657 1513 700 622 727 900 2560 1440 </string>
+	<string>699 1696 700 622 699 900 2560 1418 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>996 1026 606 469 727 900 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -225,9 +225,9 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>-2536 1633 592 584 -2766 800 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>727 900 2560 1417 727 900 2560 1417 </string>
+	<string>0 0 1440 878 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1680 1027 0 0 1680 1027 </string>
+	<string>0 539 570 452 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 27 1680 1000 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -3137,11 +3137,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-31T00:04:42Z</date>
+	<date>2018-12-02T04:34:24Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.10000000000000001</real>
 	<key>TabStyle</key>
@@ -3165,7 +3165,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.0</string>
+	<string>3.2.6</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

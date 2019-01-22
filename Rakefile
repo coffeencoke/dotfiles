@@ -2,7 +2,6 @@ require 'dotfiles_bootstrap'
 
 DotfilesBootstrap.configure do |c|
   c.name = 'dotfiles-personal'
-  c.root_dir = File.expand_path('../', __FILE__)
 end
 
 desc 'Runs all dotfiles configurations'
