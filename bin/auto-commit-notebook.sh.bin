@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Filechange detected, attempting to commit changes and push to HEAD"
-git commit --all -m "[Autocommit] A change was detected and automatically committed by watchman"
-git push origin HEAD -u
