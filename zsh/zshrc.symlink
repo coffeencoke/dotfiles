@@ -23,20 +23,52 @@ light_mode() {
 }
 
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_THEME="robbyrussell"
+# export ZSH_THEME="robbyrussell"
+# export ZSH_THEME="amuse"
+export ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 export plugins
 source $ZSH/oh-my-zsh.sh
 
+#
+# Customize the prompt
+#
 # Set the computer name to Diane if on laptop, we're not allowed to actually
 # change our computer's names :(
 if ~/bin/isDevDesktop; then
-  PROMPT='$USER@DevDesktop %{$fg[cyan]%}%c%{$reset_color%}
-%{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
+  computer_name=Desktop
 else
-  PROMPT='$USER@Diane %{$fg[cyan]%}%c%{$reset_color%}
-%{$(iterm2_prompt_mark)%}$(git_prompt_info)${ret_status}'
+  computer_name=Diane
 fi
+
+# Overwrite prompt_context so we can change the computer names
+function prompt_context() {
+  original_prompt_context="%{%K{black}%}%{%F{default}%} %(!.%{%F{yellow}%}.)%n"
+  echo "$original_prompt_context@$computer_name%"
+}
+
+# Put the command prompt on the 2nd line
+function prompt_end_end() {
+        echo "
+$"
+}
+
+function build_prompt() {
+        RETVAL=$?
+        prompt_status
+        prompt_virtualenv
+        prompt_context
+        prompt_dir
+        prompt_git
+        prompt_bzr
+        prompt_hg
+        prompt_end
+        # Only custom part of this method:
+        prompt_end_end
+}
+#
+# End prompt customization
+#
 
 path+=(/usr/local/bin)
 path+=(/usr/local/sbin)
@@ -57,3 +89,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # only load thefuck if it is installed
 which thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
+

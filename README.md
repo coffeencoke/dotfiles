@@ -67,3 +67,8 @@ $ wget https://mosh.org/mosh-1.3.2.tar.gz
 $ tar -xzvf mosh-1.3.2.tar.gz && cd mosh-1.3.2
 $ ./configure && make && sudo make install
 ```
+
+# Power Fonts
+
+Install [powerfonts](https://github.com/powerline/fonts) for them to work with
+some Oh My ZSH themes.
