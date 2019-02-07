@@ -27,6 +27,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'zephod/vim-iterm2-navigator'
 Bundle 'scrooloose/syntastic'
 Bundle 'dbeniamine/cheat.sh-vim'
+Bundle 'powerline/powerline'
 
 " Snippets
 "Bundle 'SirVer/ultisnips'
@@ -39,8 +40,6 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'isRuslan/vim-es6'
-" Required by ruby-refactoring
-Bundle 'edsono/vim-matchit'
 Bundle 'jgdavey/vim-blockle'
 Bundle 'aming/vim-mason'
 Bundle 'mxw/vim-jsx'
