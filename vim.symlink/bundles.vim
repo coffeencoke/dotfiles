@@ -27,7 +27,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'zephod/vim-iterm2-navigator'
 Bundle 'scrooloose/syntastic'
 Bundle 'dbeniamine/cheat.sh-vim'
-Bundle 'powerline/powerline'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 
 " Snippets
 "Bundle 'SirVer/ultisnips'
