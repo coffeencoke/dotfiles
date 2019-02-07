@@ -49,5 +49,10 @@ set-window-option -gq mode-mouse on
 # Copy mode
 set-window-option -g mode-keys vi
 bind -n M-c copy-mode -e
-bind -T vi-copy 'v' begin-selection
-bind -T vi-copy 'y' copy-selection
+# Not working:
+# bind -T vi-copy 'v' begin-selection
+# bind -T vi-copy 'y' copy-selection
+
+# Powerline Status for TMUX: https://powerline.readthedocs.io/en/latest/usage/other.html#tmux-statusline
+run-shell "powerline-daemon -q"
+source "/usr/local/lib/python3.7/site-packages/powerline/bindings/tmux/powerline.conf"
