@@ -22,3 +22,7 @@ let amazonvim=expand("~/.vimamazon/base.vim")
 if filereadable(amazonvim)
   execute "source ".amazonvim
 endif
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
