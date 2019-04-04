@@ -9,6 +9,9 @@ Bundle 'gmarik/vundle'
 " Cosmetic
 Bundle 'flazz/vim-colorschemes'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'google/maktaba'
+Bundle 'google/vim-codefmt'
+Bundle 'google/vim-glaive'
 
 " Functional
 Bundle 'kien/ctrlp.vim'
