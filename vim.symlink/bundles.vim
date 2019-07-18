@@ -47,6 +47,13 @@ Bundle 'jgdavey/vim-blockle'
 Bundle 'aming/vim-mason'
 Bundle 'mxw/vim-jsx'
 Bundle 'tpope/vim-haml'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'Quramy/vim-js-pretty-template'
+Bundle 'jason0x43/vim-js-indent'
+Bundle 'Quramy/tsuquyomi'
+
+" Completion
+Bundle 'ycm-core/YouCompleteMe'
 
 " Git
 Bundle 'tpope/vim-fugitive'

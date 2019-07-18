@@ -32,6 +32,9 @@ The following should be manually installed:
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/)
 - Install [powerfonts](https://github.com/powerline/fonts) for them to work with
 some Oh My ZSH themes.
+- YouCompleteMe requires manual setup: https://github.com/ycm-core/YouCompleteMe#macos
+  - `cd ~/.vim/bundle/YouCompleteMe`
+  - `./install.py --clang-completer --ts-completer`
 
 # Contribute
 
