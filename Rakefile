@@ -9,7 +9,13 @@ task :default => %w(
   dotfiles_bootstrap:default
   utils:ctags
   vundle:install
+  install_gems
 )
+
+desc 'Installs rubygems'
+task :install_gems do
+  `gem install tmuxinator`
+end
 
 namespace :utils do
   desc 'Installs ctags 5.8'
