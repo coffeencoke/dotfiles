@@ -1,6 +1,7 @@
 # Source tmuxinator for completion
 source ~/.tmuxinator-completion
 
+alias t=tmuxinator
 
 # tmux-mouse-toggle
 # via http://qiita.com/kawaz/items/7b15e18ca8e072c1dc57
