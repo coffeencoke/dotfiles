@@ -15,7 +15,16 @@ task default: %w(
   vundle:install
   gem:install_packages
   zsh:install_zsh_autosuggestions
+  fzf:install
 )
+
+namespace :fzf do
+  desc 'Installs fzf: '
+  task :install do
+    DotfilesBootstrap.exec_cmd 'git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf', command_noun: 'fzf git clone'
+    DotfilesBootstrap.exec_cmd '~/.fzf/install', command_noun: 'fzf Installer'
+  end
+end
 
 namespace :zsh do
   desc 'Installs zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md'
