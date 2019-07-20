@@ -53,7 +53,7 @@ Bundle 'jason0x43/vim-js-indent'
 Bundle 'Quramy/tsuquyomi'
 
 " Completion
-" Bundle 'ycm-core/YouCompleteMe'
+Bundle 'ycm-core/YouCompleteMe'
 Bundle 'zxqfl/tabnine-vim'
 
 " Git
@@ -67,4 +67,3 @@ Bundle 'tpope/vim-fugitive'
 "let g:airline_right_sep=''
 
 filetype plugin indent on " required!
-
