@@ -3,6 +3,7 @@ ag
 autoconf
 automake
 ctags
+ccls
 fontconfig
 freetype
 fswatch
