@@ -2,6 +2,15 @@
 
 These files keep Matt's development environment humming.
 
+# What's Included?
+
+Installs...
+
+- Homebrew (+brew packages)
+- Shell (oh-my-zsh, custom scripts, plugins, config)
+- VIM (custom config, plugins)
+- Ctags, AutoCompletion, FZF, TheFuck
+
 # Get Started
 
 To install:
@@ -11,15 +20,15 @@ bundle install
 bundle exec rake
 ```
 
-Run with dryrun:
+Other tasks:
 
 ```
+bundle exec rake -T
+
+# Run with dryrun:
 bundle exec rake dryrun default
-```
 
-Other options, which can be chained:
-
-```
+# Dryrun, force, debug
 bundle exec rake dryrun force debug default
 ```
 
@@ -30,6 +39,8 @@ manually for now.
 
 - Install [powerfonts](https://github.com/powerline/fonts) for them to work with
 some Oh My ZSH themes.
+- Python3 and pip3
+- For Mac: https://github.com/sindresorhus/quick-look-plugins
 
 ## Ubuntu Only
 
@@ -37,16 +48,8 @@ The following is already automated for Mac, but needs to be manually installed f
 
 - [thefuck](https://github.com/nvbn/thefuck)*
   - Uses pip3 to install
-- [fzf](https://github.com/junegunn/fzf)*
 
 # Contribute
 
 View the [CONTRIBUTING.md](./CONTRIBUTING.md) file to contribute to this
 project.
-
-# Included
-
-* Installs Homebrew, oh-my-zsh, VIM plugins, Ctags
-* Installs brew packages, zsh scripts, and common config
-
-# Power Fonts

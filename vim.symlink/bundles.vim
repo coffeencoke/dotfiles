@@ -53,7 +53,6 @@ Bundle 'jason0x43/vim-js-indent'
 Bundle 'Quramy/tsuquyomi'
 
 " Completion
-Bundle 'ycm-core/YouCompleteMe'
 Bundle 'zxqfl/tabnine-vim'
 
 " Git
