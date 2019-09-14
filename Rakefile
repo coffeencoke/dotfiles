@@ -8,8 +8,7 @@ DotfilesBootstrap.configure do |c|
   c.name = 'dotfiles-personal'
 end
 
-desc 'Runs all dotfiles installers and configuration scripts'
-task default: %w(
+default_tasks = %w(
   dotfiles_bootstrap:default
   utils:ctags
   vundle:install
@@ -17,6 +16,12 @@ task default: %w(
   zsh:install_zsh_autosuggestions
   fzf:install
 )
+if DotfilesBootstrap.mac?
+  default_tasks << 'zsh:install_one_time'
+end
+
+desc 'Runs all dotfiles installers and configuration scripts'
+task default: default_tasks
 
 namespace :fzf do
   desc 'Installs fzf: '
@@ -31,6 +36,14 @@ namespace :zsh do
   task :install_zsh_autosuggestions do
     DotfilesBootstrap.exec_cmd "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
       command_noun: "zsh-autosuggestions"
+  end
+
+  desc 'One Time Installers'
+  task :install_one_time do
+    DotfilesBootstrap.logger.info 'Installing zsh one-time scripts'
+    # Set a crazy fast keyboard repeat rate
+    DotfilesBootstrap.exec_cmd 'defaults write NSGlobalDomain KeyRepeat -int 1', command_noun: 'KeyRepeat'
+    DotfilesBootstrap.exec_cmd 'defaults write NSGlobalDomain InitialKeyRepeat -int 15', command_noun: 'InitialKeyRepeat'
   end
 end
 
