@@ -3,3 +3,4 @@
 .bundle
 vim.symlink/bundle
 logs
+.DS_Store

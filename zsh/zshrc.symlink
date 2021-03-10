@@ -26,10 +26,8 @@ light_mode() {
 set -o emacs
 
 # Not working on my desktop
-# export DISABLE_AUTO_UPDATE=true
+export DISABLE_AUTO_UPDATE=true
 export ZSH=$HOME/.oh-my-zsh
-# export ZSH_THEME="robbyrussell"
-# export ZSH_THEME="amuse"
 export ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 export plugins
@@ -43,7 +41,7 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 #
 # Set the computer name to Diane if on laptop, we're not allowed to actually
 # change our computer's names :(
-if ~/bin/isDevDesktop; then
+if [ -f ~/bin/isDevDesktop ]; then
   computer_name=Desktop
 else
   computer_name=Diane
@@ -97,3 +95,24 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # only load thefuck if it is installed
 which thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+alias po=popd

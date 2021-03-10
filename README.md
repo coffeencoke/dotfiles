@@ -13,6 +13,39 @@ Installs...
 
 # Get Started
 
+## Prereqs
+
+### Install Ruby
+
+Ruby needs to be manually installed for the rest of the dotfiles to work:
+
+- [install rbenv](https://github.com/rbenv/rbenv#installation)
+- [install ruby-build](https://github.com/rbenv/ruby-build#readme)
+
+Install the ruby version used by this package and set it to be used:
+
+```
+# May need to source your profile:
+$ . ~/.zshrc
+
+# Will pickup the version from `.ruby-version`:
+$ rbenv install 
+
+$ rbenv local 
+
+# Install gems
+$ bundle install
+```
+
+### Manual updates
+
+Install powerline, setup 
+
+```
+# RHEL5
+
+```
+
 To install:
 
 ```

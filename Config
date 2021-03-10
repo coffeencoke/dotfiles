@@ -1,0 +1,52 @@
+package.Mattsimp-dotfiles-personal = {
+    interfaces = (1.0);
+
+    build-system = brazilrake;
+    build-environment = {
+        chroot = basic;
+        network-access = blocked;
+    };
+
+    build-tools = {
+        1.0 = {
+            # DO NOT add a build-tool dependency on any Ruby runtime!
+            # See the BrazilRake-2.0 documentation.
+            BrazilRake = 2.0;
+            BrazilPython = 3.0;
+        };
+    };
+
+    dependencies = {
+        1.0 = {
+            # DO NOT add a dependency on any Ruby runtime!
+        };
+    };
+
+    runtime-dependencies = {
+        1.0 = {
+            CPython36 = default;
+            CPython37 = default;
+            Ruby = default;
+            RubyGem-colorize = 0.7.x;
+            RubyGem-highline = 1.7.x;
+
+            JqPackage = 1.x_oniguruma;
+        };
+    };
+
+    test-dependencies = {
+        1.0 = {
+            # DO NOT add a test dependency on any Ruby runtime!
+        };
+    };
+
+    remove-dependencies = {
+        1.0 = {
+        };
+    };
+
+    targets = {
+        # See Rakefile for build logic
+        ruby = { type = ruby; };
+    };
+};

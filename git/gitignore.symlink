@@ -24,44 +24,10 @@ vim/doc/tags-ja
 *.iml
 *.idea/*
 
+# VS COde
+*.vscode
+
 .yardoc/
 .lesshst
 .guard_history
-
-
-# My home directory files to ignore
-.CFUserTextEncoding
-.NERDTreeBookmarks
-.Trash/
-.account
-.android/
-.anyconnect
-.bash_history
-.bash_sessions/
-.blackcaiman
-.bundle/
-.cache/
-.cisco/
-.cups/
-.diane
-.dropbox/
-.gem/
-.gradle/
-.irb_history
-.midway/
-.node_repl_history
-.npm/
-.oracle_jre_usage/
-.rbenv/
-.rnd
-.skipbuddy
-.sqlworkbench/
-.ssh/
-.subversion/
-.toolbox/
-.x11vncrc
-.zcompdump-186590ce2c05-5.2
-.zsh-update
-.zsh_history
-.zshrc.pre-oh-my-zsh
 

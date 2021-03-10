@@ -72,7 +72,7 @@ end
 
 namespace :vundle do
   desc 'Installs vundler, packages, and post-hooks'
-  task install: [:prepare, :install_vim_bundles, :install_youcompleteme]
+  task install: [:prepare, :install_vim_bundles]
 
   desc 'Installs vim bundles'
   task :install_vim_bundles => :prepare do
@@ -89,10 +89,11 @@ namespace :vundle do
     end
   end
 
-  desc 'Install YouCompleteMe'
-  task :install_youcompleteme, :install_vim_bundles do
-    DotfilesBootstrap.change_file '~/.vim/bundle/YouCompleteMe' do |path|
-      DotfilesBootstrap.exec_cmd "./install.py --clang-completer --ts-completer", command_noun: "YouCompleteMe"
-    end
-  end
+  # Currently no in vundle
+  # desc 'Install YouCompleteMe'
+  # task :install_youcompleteme, :install_vim_bundles do
+  #   DotfilesBootstrap.change_file '~/.vim/bundle/YouCompleteMe' do |path|
+  #     DotfilesBootstrap.exec_cmd "./install.py --clang-completer --ts-completer", command_noun: "YouCompleteMe"
+  #   end
+  # end
 end
