@@ -41,11 +41,8 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 #
 # Set the computer name to Diane if on laptop, we're not allowed to actually
 # change our computer's names :(
-if [ -f ~/bin/isDevDesktop ]; then
-  computer_name=Desktop
-else
-  computer_name=Diane
-fi
+computer_name=Diane
+[ -f ~/bin/isDevDesktop ] && ~/bin/isDevDesktop && computer_name=Desktop
 
 # Overwrite prompt_context so we can change the computer names
 function prompt_context() {
